@@ -1,8 +1,6 @@
 % some libraries to include
 %
 
-expdir = '/Volumes/MomchilfMRI/examplesGLM/';
-
 addpath('/Applications/spm12/'); % SPM itself
 addpath('/Applications/spm12/config/'); % SPM itself
 addpath('/Users/momchil/Dropbox/Research/libs/ccnl-fmri/') % sam's ccnl fmri wrappers for SPM
