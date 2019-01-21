@@ -19,7 +19,7 @@ function rsa = lang_create_rsa(rsa_idx, subj)
             rsa.event = 'N/A';
             rsa.glmodel = NaN;
             rsa.radius = 10; % in voxels; TODO what's the resolution?
-            rsa.mask = fullfile(EXPT.subject(subj).datadir, 'volmask.nii'); % TODO okay that they're subject-specific?
+            rsa.mask = fullfile(EXPT.subject(subj).datadir, 'volmask.nii'); % subject-specific masks
             rsa.which_betas = logical([]);
 
 
