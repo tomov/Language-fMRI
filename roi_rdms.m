@@ -32,6 +32,7 @@ function Neural = searchlight_rdms(EXPT, rsa_idx, region_names, subjects)
         % for each voxel
         for i = 1:length(region_names)
 
+            % try to find region name in AAL or in langloc
             idx = NaN;
             for j = 1:length(labels_aal)
                 if strcmp(labels_aal{j}, region_names{i})
@@ -39,14 +40,29 @@ function Neural = searchlight_rdms(EXPT, rsa_idx, region_names, subjects)
                     break;
                 end
             end
-            assert(~isnan(idx));
 
-            
-            % create searchlight mask
-            region_mask = volaal == idx;
+            if ~isnan(idx)
+                % create region mask
+                region_mask = volaal == idx;
+            else
+                fprintf('did not find %s in AAL atlas; looking in language localizer...\n', region_names{i});
+                % not in AAL => must be in langloc
+                for j = 1:length(labels_langloc)
+                    if strcmp(labels_langloc{j}, region_names{i})
+                        idx = j;
+                        break;
+                    end
+                end
+                assert(~isnan(idx), sprintf('No region %s', region_names{i}));
+
+                % create region mask
+                region_mask = vollangloc == idx;
+            end
+           
+
+
             assert(sum(region_mask(:)) > 0);
             region_mask = region_mask & subjmask; % exclude out-of-brain voxels
-
             region_mask(subjmask) = region_mask(subjmask) & ~any(isnan(B), 1)'; % exclude nan voxels
 
             % compute RDM
