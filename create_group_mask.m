@@ -15,6 +15,11 @@ for s = 1:length(EXPT.subject)
     else
         mask = mask & subjmask;
     end
+
+    % remove NaN voxels
+    load(fullfile(EXPT.subject(s).datadir, 'examplesGLM.mat'), 'examples_sentences');
+    B = examples_sentences;
+    mask(subjmask) = mask(subjmask) & ~any(isnan(B), 1)';
 end
 
 niftiwrite(double(mask), fullfile(EXPT.dir, 'mask.nii'));

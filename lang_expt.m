@@ -5,6 +5,7 @@ function EXPT = lang_expt()
 
     exptdir = '/Volumes/MomchilfMRI/examplesGLM/'; % TODO Rebecca 
     rsadir = '/Users/momchil/Dropbox/Research/language/rsaOutput'; % TODO Rebecca 
+    modeldir = '/Users/momchil/Dropbox/Research/language/glmOutput'; % TODO Rebecca 
 
 
     % TODO subj3 has a mask / volume of different dimensions
@@ -20,3 +21,4 @@ function EXPT = lang_expt()
     EXPT.create_rsa = @lang_create_rsa;
     EXPT.dir = exptdir;
     EXPT.rsadir = rsadir;
+    EXPT.modeldir = modeldir;

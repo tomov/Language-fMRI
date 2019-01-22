@@ -3,6 +3,7 @@
 
 
 EXPT = lang_expt;
+% TODO Rebecca play around with language areas
 region_names = {'LAngG', 'Hippocampus_L', 'Hippocampus_R', 'Insula_L', 'Insula_R'};
 rsa_idx = 1;
 
@@ -17,3 +18,5 @@ Neural = roi_rdms(EXPT, rsa_idx, region_names)
 
 % save output 
 save('temp.mat', 'region_names', 'Rho', 'H', 'T', 'P', 'all_subject_rhos', 'rsa_idx', '-v7.3');
+
+% TODO Rebecca generate null distribution by shuffling features in lang_create_rsa.m to compute "actual" p-value

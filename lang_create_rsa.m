@@ -18,14 +18,15 @@ function rsa = lang_create_rsa(rsa_idx, subj)
         case 1
             rsa.event = 'N/A';
             rsa.glmodel = NaN;
-            rsa.radius = 10; % in voxels; TODO what's the resolution?
+            rsa.radius = 10 / 2; % in voxels; TODO what's the resolution? TODO Rebecca
             rsa.mask = fullfile(EXPT.subject(subj).datadir, 'volmask.nii'); % subject-specific masks
             rsa.which_betas = logical([]);
 
 
             rsa.model(1).name = 'length_diff';
-            rsa.model(1).features = cellfun(@(str) length(str), sentences);
-            rsa.model(1).distance_measure = @(x1, x2) abs(x1 - x2);
+            % TODO Rebecca shuffle features here to get null distribution
+            rsa.model(1).features = cellfun(@(str) length(str), sentences); % TODO Rebecca representation in middle layer of neural network, for each sentence
+            rsa.model(1).distance_measure = @(x1, x2) abs(x1 - x2); % TODO Rebecca cosine distance 
             rsa.model(1).is_control = false;
 
 

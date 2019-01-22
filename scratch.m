@@ -1,6 +1,6 @@
 include
 
-load(fullfile(expdir, 'subj1', 'examplesGLM.mat'));
+%load(fullfile(expdir, 'subj1', 'examplesGLM.mat'));
 
 %view_mask(volmask);
 %view_mask({volmask, volmask_original});
@@ -10,9 +10,11 @@ load(fullfile(expdir, 'subj1', 'examplesGLM.mat'));
 %view_mask({fullfile(EXPT.subject(1).datadir, 'volmask.nii'), fullfile(fullfile(EXPT.subject(10).datadir, 'volmask.nii'))})
 
 %% test RSA
-% rsa = lang_create_rsa(1, 1)
-%[Behavioral, control] = ccnl_behavioral_rdms(EXPT, 1);
-%Neural = searchlight_rdms(EXPT, 1, 1:13);
+rsa = lang_create_rsa(1, 1)
+[Behavioral, control] = ccnl_behavioral_rdms(EXPT, 1);
+Neural = searchlight_rdms(EXPT, 1, 1:5);
+
+[Rho, H, T, P, all_subject_rhos] = ccnl_match_rdms(Neural, Behavioral, control);
 %showRDMs(Behavioral(1).subj);
 %showRDMs(Neural(1).subj);
 
