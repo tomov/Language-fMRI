@@ -90,7 +90,7 @@ function [Neural, cor] = searchlight_rdms(EXPT, rsa_idx, inds, subjects)
         %end
 
         tic
-        disp('computing RDMs...');
+        disp('computing RDMs yo...');
 
         % for each voxel
         for i = 1:length(x)
