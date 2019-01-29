@@ -20,7 +20,7 @@ function rsa = lang_create_rsa(rsa_idx, subj)
             rsa.glmodel = NaN;
             rsa.radius = 10 / 2; % in voxels; TODO what's the resolution? TODO Rebecca
             rsa.mask = fullfile(EXPT.subject(subj).datadir, 'volmask.nii'); % subject-specific masks
-            rsa.which_betas = logical([]);
+            rsa.which_betas = logical([]); % we don't need it in this case
 
 
             rsa.model(1).name = 'length_diff';
