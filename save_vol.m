@@ -5,7 +5,8 @@ function info = save_vol(vol, filename)
 
     [~, V, Y] = ccnl_load_mask('mask_from_uncertainty_study.nii');
     Y(:) = 0;
-    Y(1:size(vol,1), 1:size(vol,2), 1:size(vol,3)) = vol;
+    %Y(1:size(vol,1), 1:size(vol,2), 1:size(vol,3)) = vol;
+    Y(:) = imresize3(vol, size(Y), 'nearest');
     V.fname = filename; % !!!!!!!!!!!!!!! important!!!!!!
     spm_write_vol(V, Y);
 
